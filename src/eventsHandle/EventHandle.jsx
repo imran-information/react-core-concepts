@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function EventHandle() {
     const handleStyle = {
@@ -8,6 +8,11 @@ export default function EventHandle() {
     }
 
     const [state, setState] = useState(0);
+
+    useEffect(() => {
+        console.log('UseEffect code run');
+
+    }, [state])
 
     const handleAddEvents = () => {
         setState(state + 1)
@@ -20,8 +25,10 @@ export default function EventHandle() {
     return (
         <div style={handleStyle}>
             <h2>Handle The number Count {state}</h2>
+            <h3>UseEfect</h3>
             <button onClick={handleAddEvents} style={{ margin: "20px" }}>Event add</button>
             <button onClick={handleMinusEvents}>Event Minus</button>
+
         </div>
     )
 }
